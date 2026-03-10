@@ -30,12 +30,9 @@ function App() {
       const result = await response.json();
       console.log("Success! Here are your tokens:", result);
 
-      // result.access is "Key"
-      // result.refresh is "Backup Key"
-
       localStorage.setItem("access_token", result.access)
+      setAuthError(null)
     } catch (error) {
-      console.error("Oops!", error.message);
       setAuthError(error.message);
     } finally {
       setIsSecretShown(true)
